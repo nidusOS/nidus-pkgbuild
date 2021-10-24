@@ -1,0 +1,40 @@
+# Maintainer: Chris Brame <polonel@gmail.com>
+pkgname=polonel-xmobar
+_pkgname=dotfiles/arch
+pkgver=1.r4.1f004c6
+pkgrel=1
+epoch=
+pkgdesc="The default xmobar config for polonel."
+arch=('x86_64')
+url="https://www.github.com/polonel/dotfiles"
+license=('GPL3')
+groups=()
+depends=(polonel-local-bin otf-font-awesome ttf-mononoki ttf-ubuntu-font-family trayer xmobar)
+makedepends=(git)
+checkdepends=()
+optdepends=()
+provides=(polonel-xmobar)
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=${pkgname}.install
+changelog=
+source=("git+$url")
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+pkgver() {
+    printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "${_pkgname}"
+    install -Dm755 etc/polonelconf/.config/xmobar/xmobarrc ${pkgdir}/etc/polonelconf/.config/xmobar/xmobarrc
+    install -Dm755 etc/polonelconf/.config/xmobar/xmobarrc-no-battery ${pkgdir}/etc/polonelconf/.config/xmobar/xmobarrc-no-battery
+    install -Dm755 etc/polonelconf/.config/xmobar/trayer-padding-icon.sh ${pkgdir}/etc/polonelconf/.config/xmobar/trayer-padding-icon.sh
+    #install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    #install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
+}
+

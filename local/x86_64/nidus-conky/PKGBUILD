@@ -1,0 +1,40 @@
+# Maintainer: Chris Brame <polonel@gmail.com>
+pkgname=polonel-conky
+_pkgname=dotfiles/arch
+pkgver=1.r7.c9514ad
+pkgrel=1
+epoch=
+pkgdesc="The conky configuration files for polonel."
+arch=('x86_64')
+url="https://www.github.com/polonel/dotfiles"
+license=('GPL3')
+groups=()
+depends=(conky)
+makedepends=(git)
+checkdepends=()
+optdepends=()
+provides=(polonel-conky)
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=${pkgname}.install
+changelog=
+source=("git+$url")
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+pkgver() {
+	cd "${_pkgname}"
+    printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "${_pkgname}"
+    install -d ${pkgdir}/etc/polonelconf/.config/conky/
+    install -m 644 ${srcdir}/${_pkgname}/etc/polonelconf/.config/conky/* ${pkgdir}/etc/polonelconf/.config/conky/
+    #install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    #install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
+}
+
