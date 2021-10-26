@@ -1,6 +1,6 @@
 post_install() {
     echo -e "#################################################################"
-    echo -e "## Config files were placed in /etc/polonelconf/.config/fish/  ##"
+    echo -e "## Config files were placed in /etc/skel/.config/fish/         ##"
     echo -e "#################################################################"
 }
 

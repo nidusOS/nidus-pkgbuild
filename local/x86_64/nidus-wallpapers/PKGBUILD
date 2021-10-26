@@ -1,0 +1,26 @@
+# Maintainer: Aakash Sharma <aakashsensharma@gmail.com>
+pkgname=nidus-wallpapers
+_pkgname=nidus-wallpapers
+_destname1="/usr/share/backgrounds/"
+pkgver=r2.253c158
+pkgrel=1
+pkgdesc="Wallpapers for nidusOS."
+arch=('any')
+url="https://github.com/nidusos/nidus-wallpapers"
+license=('GPL3')
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/nidusos/${_pkgname}.git")
+sha256sums=('SKIP')
+install='post.install'
+
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}

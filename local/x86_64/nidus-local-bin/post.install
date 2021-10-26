@@ -1,6 +1,6 @@
 post_install() {
     echo -e "##############################################################"
-    echo -e "## Config files were placed in /etc/polonelconf/.local/bin  ##"
+    echo -e "## Config files were placed in /etc/skel/.local/bin         ##"
     echo -e "##############################################################"
 }
 

@@ -1,11 +1,11 @@
 # Maintainer: Chris Brame <polonel@gmail.com>
-pkgname=nidus-fish
+pkgname=nidus-base-config
 _pkgname=nidus-base-config
 _destname1=/etc/skel
 pkgver=1.r2.35f632e
 pkgrel=1
 epoch=
-pkgdesc="The default fish config for nidusOS."
+pkgdesc="The default config for nidusOS."
 arch=('x86_64')
 url="https://www.github.com/nidusos/${_pkgname}"
 license=('GPL3')
@@ -31,6 +31,9 @@ pkgver() {
 }
 
 package() {
-    install -dm755 ${pkgdir}${_destname1}/.config/fish
-    cp -lr ${srcdir}/${_pkgname}${_destname1}/.config/fish ${pkgdir}${_destname1}/.config/
+    install -dm755 ${pkgdir}${_destname1}/.config/gtk-3.0
+    install -dm755 ${pkgdir}${_destname1}/.config/volumeicon
+
+    cp -lr ${srcdir}/${_pkgname}${_destname1}/.config/gtk-3.0 ${pkgdir}${_destname1}/.config
+    cp -lr ${srcdir}/${_pkgname}${_destname1}/.config/volumeicon ${pkgdir}${_destname1}/.config
 }

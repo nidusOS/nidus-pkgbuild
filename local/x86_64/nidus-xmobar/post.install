@@ -1,6 +1,6 @@
 post_install() {
     echo -e "###################################################################"
-    echo -e "## Config files were placed in /etc/polonelconf/.config/xmobar/  ##"
+    echo -e "## Config files were placed in /etc/skel/.config/xmobar/         ##"
     echo -e "###################################################################"
 }
 

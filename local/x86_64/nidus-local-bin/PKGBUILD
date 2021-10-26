@@ -1,26 +1,27 @@
 # Maintainer: Chris Brame <polonel@gmail.com>
-pkgname=polonel-local-bin
-_pkgname=dotfiles/arch
-pkgver=1.r7.c9514ad
+pkgname=nidus-local-bin
+_pkgname=nidus-base-config
+_destname1=/etc/skel
+pkgver=1.r3.ba0dfdc
 pkgrel=1
 epoch=
-pkgdesc="The .local/bin directory and scripts for polonel."
+pkgdesc="The .local/bin directory and scripts for nidusos."
 arch=('x86_64')
-url="https://www.github.com/polonel/dotfiles"
+url="https://www.github.com/nidusos/${_pkgname}"
 license=('GPL3')
 groups=()
 depends=(pacman-contrib)
 makedepends=(git)
 checkdepends=()
 optdepends=()
-provides=(polonel-local-bin)
+provides=(nidus-local-bin)
 conflicts=()
 replaces=()
 backup=()
 options=()
-install=${pkgname}.install
+install=post.install
 changelog=
-source=("git+$url")
+source=(${_pkgname}::"git+https://github.com/nidusos/${_pkgname}.git")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
@@ -32,9 +33,6 @@ pkgver() {
 
 package() {
     cd "${_pkgname}"
-    install -d ${pkgdir}/etc/polonelconf/.local/bin/
-    install -m 644 ${srcdir}/${_pkgname}/etc/polonelconf/.local/bin/* ${pkgdir}/etc/polonelconf/.local/bin/
-    #install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    #install -Dm644 README.org "${pkgdir}/usr/share/doc/${pkgname}/README.org"
+    install -d ${pkgdir}${_destname1}/.local/bin/
+    install -m 755 ${srcdir}/${_pkgname}/${_destname1}/.local/bin/* ${pkgdir}${_destname1}/.local/bin/
 }
-
