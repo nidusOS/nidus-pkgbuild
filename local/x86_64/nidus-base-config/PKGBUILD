@@ -2,7 +2,7 @@
 pkgname=nidus-base-config
 _pkgname=nidus-base-config
 _destname1=/etc/skel
-pkgver=1.r2.35f632e
+pkgver=1.r3.40682c9
 pkgrel=1
 epoch=
 pkgdesc="The default config for nidusOS."
@@ -31,8 +31,9 @@ pkgver() {
 }
 
 package() {
-    install -dm755 ${pkgdir}${_destname1}/.config/gtk-3.0
-    install -dm755 ${pkgdir}${_destname1}/.config/volumeicon
+    install -dm655 ${pkgdir}${_destname1}/.config/gtk-3.0
+    install -dm655 ${pkgdir}${_destname1}/.config/volumeicon
+    install -m655 ${srcdir}/${_pkgname}${_destname1}/.gtkrc-2.0 ${pkgdir}${_destname1}/.gtkrc-2.0
 
     cp -lr ${srcdir}/${_pkgname}${_destname1}/.config/gtk-3.0 ${pkgdir}${_destname1}/.config
     cp -lr ${srcdir}/${_pkgname}${_destname1}/.config/volumeicon ${pkgdir}${_destname1}/.config
